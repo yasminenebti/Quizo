@@ -1,0 +1,138 @@
+<div class="bootstrap-wrapper" *ngIf="!isSubmit">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-2"></div>
+        <div class="col-md-8">
+          <mat-card *ngIf="questions && questions.length > 0">
+            <h1>{{questions[0].quiz.name}}</h1>
+          </mat-card >
+          <mat-card *ngIf="!questions || questions.length === 0">
+            <p>No questions available.</p>
+          </mat-card>
+          <mat-card *ngFor="let q of questions; let i = index" class="">
+            <mat-card-content>
+              <p> 
+                <b>{{i+1}}/</b>
+                <span>{{ q.content }}</span>
+            </p>
+              <mat-divider></mat-divider>
+              <div class="row">
+                <ng-container *ngFor="let option of q.options">
+                  <div class="col-md-6">
+                     <input
+                      (click)="getResult(option , q)"
+                      type="radio"
+                      [value]="option"
+                      [name]="i"
+                      [checked]="responses[q.id] === option"
+                    /> 
+      
+                    {{ option }}
+                  </div>
+                  
+                </ng-container>
+               
+              </div>
+            </mat-card-content>
+          </mat-card>
+          <div class="container" style="text-align: center">
+            <button mat-raised-button class="btn2" (click)="submitQuiz()" [disabled]="!areAllQuestionsAnswered">Submit Quiz</button>
+        </div>
+          
+          
+        </div>
+        
+        <div class="col-md-2">
+          <mat-card>
+            <mat-card-header style="margin: auto;">
+              <mat-card-title>Progress   
+              </mat-card-title>
+              <mat-card-subtitle class="container" style="text-align: center">{{getTime()}}   
+              </mat-card-subtitle>
+
+            </mat-card-header>
+            <mat-card-content>
+              <mat-spinner
+               style="margin: auto;"
+               mode="determinate"
+               [value]="timer"
+               >
+               
+
+              </mat-spinner>
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div class="bootstrap-wrapper" *ngIf="isSubmit">
+    <div class="row">
+      <div class="col-md-6 offset-md-3">
+        <mat-card class="container" style="text-align: center">
+          <mat-card-header>
+            <mat-card-title>
+              Score
+            </mat-card-title>
+          </mat-card-header>
+            <mat-card-content>
+              <h1>{{correctCount}}</h1>
+            </mat-card-content>
+          <div class="container" style="text-align: center">
+            <button mat-raised-button color="primary" (click)="tryAgain()">Try Again</button>
+          <button mat-raised-button [routerLink]="'/'" style="margin-left: 20px;" color="primary">Next Up!</button>
+          </div>
+        </mat-card>
+      </div>
+    </div>
+
+  </div>
+  
+<!--   
+  <mat-card *ngFor="let q of questions ; let i=index"  class="">
+    <mat-card-content>
+        <p>{{q.content}}</p>
+        <mat-divider></mat-divider>
+        <div class="row">
+            <div class="col-md-6">
+                <input 
+                type="radio" 
+                [value]="q.options[0]"
+                [name]="i"
+                />
+                {{q.options[0]}}
+            </div>
+            <div class="col-md-6">
+                <input 
+                type="radio" 
+                [value]="q.options[1]"
+                [name]="i"
+                />
+                {{q.options[1]}}
+            </div>
+            
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                <input 
+                type="radio" 
+                [value]="q.options[2]"
+                [name]="i"
+                />
+                {{q.options[2]}}
+            </div>
+            <div class="col-md-6">
+                <input 
+                type="radio" 
+                [value]="q.options[3]"
+                [name]="i"
+                />
+                {{q.options[3]}}
+            </div>
+            
+        </div>
+    </mat-card-content>
+   </mat-card> -->

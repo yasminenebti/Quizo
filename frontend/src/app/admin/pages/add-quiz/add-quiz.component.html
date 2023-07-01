@@ -1,0 +1,84 @@
+<mat-card>
+    <div mat-subheader>Add new quiz</div>
+    <mat-card-content>
+        <div class="bootstrap-wrapper">
+            <div class="row">
+                <div class="col-md-6 offset-md-3">
+                    <form [formGroup]="quizForm" (ngSubmit)="addQuiz()">
+                        <mat-form-field class="full">
+                            <mat-label>Name</mat-label>
+                            <input formControlName="name" type="text" name="text" matInput placeholder="Enter Here" />
+                            <div *ngIf="quizForm.get('name')?.invalid && quizForm.get('name')?.touched">
+                                <div class="alert alert-warning">Name is required</div>
+                            </div>
+                        </mat-form-field>
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <mat-form-field class="full">
+                                    <mat-label>Marks</mat-label>
+                                    <input formControlName="marks" type="number" name="text" matInput placeholder="Enter Here" />
+                                    <div *ngIf="quizForm.get('marks')?.invalid && quizForm.get('marks')?.touched">
+                                        <div class="alert alert-warning">Marks are required</div>
+                                    </div>
+                                </mat-form-field>
+                            </div>
+
+                            <div class="col-md-6">
+                                <mat-form-field class="full">
+                                    <mat-label>nbQuestions</mat-label>
+                                    <input formControlName="nbQuestions" type="number" name="text" matInput placeholder="Enter Here" />
+                                    <div *ngIf="quizForm.get('nbQuestions')?.invalid && quizForm.get('nbQuestions')?.touched">
+                                        <div class="alert alert-warning">nbQuestions are required</div>
+                                    </div>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                        <mat-form-field class="full">
+                            <mat-label>Topic</mat-label>
+                            <mat-select formControlName="topic">
+                              <mat-option  *ngFor="let topic of topics" [value]="topic.id">
+                                {{topic.name}}
+                              </mat-option>
+                              <div *ngIf="quizForm.get('topic')?.invalid && quizForm.get('topic')?.touched">
+                                <div class="alert alert-warning">Topic is required</div>
+                            </div>
+                            </mat-select>
+                        </mat-form-field>
+                        <br/>
+
+                        <div>
+                            <label for="">Post Image</label>
+                            <img [src]="" alt="" class="form-control mb-3 img-fluid img-placeholder">
+                            <input 
+                                type="file" 
+                                class="form-control pt-4 pb-5" 
+                                name="image"
+                                (change)="onImageSelected($event)"
+                                >
+                        </div>
+
+                        <mat-slide-toggle
+                            name="active"
+                            [checked]="false"
+                            formControlName="active">
+                            Status
+                        </mat-slide-toggle>
+
+                        <div class="container " style="text-align: center">
+                            <button  
+                            class="btn2" 
+                            mat-raised-button
+                            [ngClass]="{'grey-button': quizForm.invalid }" 
+                            [disabled]="quizForm.invalid">
+                            Add new Quiz
+                        </button>
+                        </div>
+
+                        
+                    </form>
+                </div>
+            </div>
+        </div>
+    </mat-card-content>
+</mat-card>

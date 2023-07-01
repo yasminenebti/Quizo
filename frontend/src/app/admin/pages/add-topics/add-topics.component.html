@@ -1,0 +1,38 @@
+<mat-card>
+    <div mat-subheader>Add new topics</div>
+    <mat-card-content>
+        <div class="bootstrap-wrapper">
+            <div class="row">
+                <div class="col-md-6 offset-md-3">
+                    <form [formGroup]="topicForm" (ngSubmit)="addTopic()">
+                        <mat-form-field class="full">
+                            <mat-label>Name</mat-label>
+                            <input formControlName="name" autofocus type="text" name="text" matInput placeholder="Enter Here" />
+                            <div *ngIf="topicForm.get('name')?.invalid && topicForm.get('name')?.touched">
+                                <div class="alert alert-warning">Name is required</div>
+                            </div>
+                        </mat-form-field>
+
+                        <mat-form-field class="full" >
+                            <mat-label>Description</mat-label>
+                            <textarea formControlName="description" matInput rows="4" name="description"></textarea>
+                            <div *ngIf="topicForm.get('description')?.invalid && topicForm.get('description')?.touched">
+                                <div class="alert alert-warning">Description is required</div>
+                            </div>
+                        </mat-form-field>
+                        <div class="container " style="text-align: center">
+                            <button 
+                            routerLink="/admin/add-topic"  
+                            class="btn2" 
+                            mat-raised-button
+                            [ngClass]="{'grey-button': topicForm.invalid }" 
+                            [disabled]="topicForm.invalid">
+                            Add new Topic
+                        </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </mat-card-content>
+</mat-card>

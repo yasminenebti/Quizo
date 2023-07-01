@@ -1,0 +1,11 @@
+.table{
+
+    width: 100%;
+    border: 0.3px solid #bebbbb;
+    border-collapse: collapse;
+}
+
+.table tr td{
+    padding: 20px 50px;
+
+}

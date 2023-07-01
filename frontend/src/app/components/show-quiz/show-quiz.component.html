@@ -1,0 +1,27 @@
+<div class="bootstrap-wrapper">
+  <div class="container-fluid">
+    <h2 class="title">Recent Quizzes</h2>
+    <ng-container *ngFor="let row of [0, 1]">
+      <div class="row">
+        <div class="col-md-3" *ngFor=" let quiz of quizs">
+          <mat-card class="example-card ">
+            <img mat-card-image (click)="goToQuiz(quiz.id)" src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+            <mat-card-content>
+                <mat-card-title>
+                  {{quiz.name}}
+                </mat-card-title>
+                <mat-card-subtitle class="turncate">
+                  {{quiz.topic.name}}
+                </mat-card-subtitle>
+            </mat-card-content>
+          </mat-card>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</div>
+
+
+
+  
+  

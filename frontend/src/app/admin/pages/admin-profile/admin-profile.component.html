@@ -1,0 +1,37 @@
+<mat-card>
+    <mat-card-content>
+      <div class="bootstrap-wrapper">
+        <div class="container ">
+          <h1 style="text-align: center">hello {{admin.name}}</h1>
+          <div class="row justify-content-center  ">
+            <div class="col-md-10 offset-md-1">
+              <table class="table">
+                <tr>
+                    <td>ID</td>
+                    <td>{{admin.id}}</td>
+                  </tr>
+                <tr>
+                  <td>Email</td>
+                  <td>{{admin.email}}</td>
+                </tr>
+                
+                <tr *ngIf="admin.phone">
+                  <td>Phone</td>
+                  <td>{{admin.phone}}</td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </mat-card-content>
+   
+    <mat-card-actions>
+        <div class="container" style="text-align: center">
+            <button mat-raised-button class="btn">Update</button>
+            <button mat-raised-button style="margin-left: 20px;" color="warn">Share</button>
+        </div>
+    </mat-card-actions>
+    
+  </mat-card>
+  

@@ -1,0 +1,33 @@
+
+<mat-toolbar class="tool">
+   
+    <span routerLink="/">Quiz</span>
+    <span class="example-spacer"></span>
+
+    <a
+    *ngIf="!authService.isLoggedIn()"
+     routerLink="/register" 
+     class="btn-register">
+     Register
+    </a>
+    <a
+    *ngIf="!authService.isLoggedIn()"
+     routerLink="/login" 
+     class="btn-login">
+     Login
+    </a>
+    <a
+    *ngIf="authService.isLoggedIn()"
+     class="user">
+     Welcome {{ userName  }}
+    </a>
+
+     <button
+     (click)="logout()"
+     *ngIf="authService.isLoggedIn()"
+      mat-icon-button 
+      >
+        <mat-icon>logout</mat-icon>
+      </button>
+  
+</mat-toolbar>

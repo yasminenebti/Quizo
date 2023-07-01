@@ -1,0 +1,38 @@
+<div mat-subheader class="header-container">
+    Questions 
+    <button  (click)="addNewQuestion()"  class="btn" mat-raised-button>Add new Question</button>   
+</div>
+
+<div class="bootstrap-wrapper">
+    <div class="row">
+        <div class="col-md-12">
+            <mat-card class="questions" *ngFor="let question of questions">
+                <mat-card-header >
+                    <div>
+                        <mat-card-title >
+                            <div mat-line>hi {{question.content}}</div>
+                        </mat-card-title>
+                        <mat-card-subtitle>
+                            Options                 
+                        </mat-card-subtitle>
+
+                        <button mat-button class="ml20" color="warn" *ngFor="let option of question.options">
+                            {{option}}
+                        </button>
+                        <mat-card-subtitle>
+                            Answer                 
+                        </mat-card-subtitle>
+                        <button mat-button class="ml20" color="warn">
+                            {{question.answer}}
+                        </button>
+                        <button mat-button class="ml20" color="warn" (click)="confirmDelete(question.id)">
+                            <mat-icon class="bigger-icon" >delete</mat-icon>
+                        </button>
+                    
+                    </div>
+                </mat-card-header>
+            </mat-card>
+        </div>
+
+    </div>
+</div>

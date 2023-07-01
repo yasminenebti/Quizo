@@ -1,0 +1,33 @@
+<div class="bootstrap-wrapper">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-6 offset-md-3">
+                <div>
+                    <div class="image-container">
+                        <img mat-card-image class="image card-image" src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+                        <div class="overlay">
+                            <mat-card class="card" style="width: 18rem;">
+                                <button class="mb5" mat-flat-button *ngIf="currentQuiz" >{{currentQuiz.name}}</button>
+
+                                <button class="mb5" *ngIf="currentQuiz" (click)="startQuiz(currentQuiz.id)" mat-raised-button color="primary">Start Now</button>
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <button class="mt10" mat-flat-button *ngIf="currentQuiz">Q:{{currentQuiz.nbQuestions}}</button>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <button  class="mt10" mat-flat-button *ngIf="currentQuiz">marks:{{currentQuiz.marks}}</button>
+                                    </div>
+
+                                </div>
+
+                            </mat-card>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

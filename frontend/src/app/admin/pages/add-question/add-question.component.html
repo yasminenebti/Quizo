@@ -1,0 +1,74 @@
+<mat-card>
+    <div mat-subheader>Add new Question</div>
+    <mat-card-content>
+        <div class="bootstrap-wrapper">
+            <div class="row">
+                <div class="col-md-6 offset-md-3">
+                    <form [formGroup]="questionForm" (ngSubmit)="addNewQuestion()" >
+                        <mat-form-field class="full">
+                            <mat-label>Question Content</mat-label>
+                            <input formControlName="content" type="text" name="text" matInput placeholder="Enter Here" />
+                            <div *ngIf="questionForm.get('content')?.invalid && questionForm.get('content')?.touched">
+                                <div class="alert alert-warning">Question is required</div>
+                            </div>
+                        </mat-form-field>
+
+                        <ng-container formArrayName="options">
+                            <ng-container *ngFor="let optionForm of allOptions.controls ; let i = index">
+                                    <div [formGroup]="selectedOptionForm">
+                                        <mat-form-field class="full" >
+                                            <mat-label>Option</mat-label>
+                                            <input 
+                                            matInput
+                                            formControlName ="optionContent"
+                                            placeholder="Enter Here" />
+                                        </mat-form-field>
+                                        <mat-icon class="delete-btn" (click)="deleteOption(i)">delete</mat-icon>
+                                    </div>
+                            </ng-container>
+                        </ng-container>
+
+                           <button mat-mini-fab (click)="addNewOption()">
+                                <mat-icon>add</mat-icon>
+                           </button> 
+                        
+                        <mat-form-field class="full">
+                            <mat-label>answer</mat-label>
+                            <input formControlName="answer" type="text" name="text" matInput placeholder="Enter Here" />
+                            <div *ngIf="questionForm.get('answer')?.invalid && questionForm.get('answer')?.touched">
+                                <div class="alert alert-warning">answer are required</div>
+                            </div>
+                        </mat-form-field>
+
+                        <!-- <mat-form-field class="full">
+                            <mat-label>answer</mat-label>
+                            <input formControlName="answer" type="text" name="text" matInput placeholder="Enter Here" />
+                            <mat-select formControlName="answer" placeholder="Select Answer">
+                                <mat-option *ngFor="let option of allOptions.controls" [value]="option.value.optionContent">
+                                  {{ option.value.optionContent }}
+                                </mat-option>
+                              </mat-select>
+                        </mat-form-field> -->
+
+                        
+
+                        <br/>
+
+                        <div class="container " style="text-align: center">
+                            <button  
+                            class="btn2" 
+                            mat-raised-button
+                            [ngClass]="{'grey-button': questionForm.invalid }" 
+                            [disabled]="questionForm.invalid">
+                            Add new Question
+                        </button>
+                        </div>
+
+                        
+                    </form>
+                </div>
+            </div>
+        </div>
+    </mat-card-content>
+</mat-card>
+

@@ -1,0 +1,38 @@
+.card-container {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 60px;
+  }
+
+  .example-card {
+    max-width: 300px;
+  }
+  .bootstrap-wrapper{
+    margin: 0 74px;
+  }
+
+  
+  .title{
+    margin: 0 10px;
+    
+  }
+
+
+  
+  mat-card {
+    flex-basis: calc(25% - 20px); /* Adjust the value as needed */
+    margin: 10px;
+  }
+
+  .card-image {
+    width: 100%; /* Adjust the desired width */
+    height: auto; /* Maintain aspect ratio */
+  }
+
+  .turncate{
+    display: block;
+    white-space: nowrap;
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }

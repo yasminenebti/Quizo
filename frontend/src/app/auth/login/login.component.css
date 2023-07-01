@@ -1,0 +1,11 @@
+.full-width{
+    width: 100%;
+}
+
+.bootstrap-wrapper{
+    padding-top: 30px;
+}
+
+.grey-button {
+    background-color: grey !important;
+  }

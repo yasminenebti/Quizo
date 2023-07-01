@@ -1,0 +1,48 @@
+<div class="bootstrap-wrapper main">
+    <div class="row">
+      <div class="col-md-12 centered-image">
+        <img class="card-image2" alt="" src="https://images.unsplash.com/photo-1467269204594-9661b134dd2b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80">
+      </div>
+    </div>
+</div>
+
+<div class="bootstrap-wrapper">
+  <div class="container-fluid">
+    <h2 class="title">{{quizTopic}}</h2>
+    <div class="row">
+      <div class="col-md-3" *ngFor="let quiz of quizs; let i = index;">
+        <mat-card class="example-card">
+          <img mat-card-image (click)="goToQuiz(quiz.id)" src="https://material.angular.io/assets/img/examples/shiba2.jpg">
+          <mat-card-content>
+            {{quiz.name}}
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="bootstrap-wrapper">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-6" *ngIf="quizs && quizs.length === 0">
+        <mat-card class="example-card">
+          <mat-card-content>
+            No Quiz Available here
+          </mat-card-content>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  
+  
+  
+  
+  
+  
+  
+  
+  
